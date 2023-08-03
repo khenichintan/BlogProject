@@ -1,0 +1,90 @@
+<%- include('header') %>
+    <div class="main-content">
+        <div class="section__content section__content--p30">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <div class="card-header col-md-2" style="background-color: transparent;">
+                            <strong>Offer View</strong>
+                        </div>
+
+                        <form class="form-header">
+                            <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                            <button class="au-btn--submit" type="submit">
+                                <i class="zmdi zmdi-search"></i>
+                            </button>
+                        </form>
+
+                        <div class="table-responsive table--no-card m-b-30">
+                            <form method="post" action="/offer/mulDel">
+                                <table class="table table-borderless table-striped table-earning first text-left ">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <input type="checkbox" id="multidelet">
+                                                <input type="submit" value="delet">
+                                            </th>
+                                            <th>Icon</th>
+                                            <th>Title</th>
+                                            <th>Description</th>
+                                            <th>Status</th>
+                                            <th>Operation</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% for(var od of offerdata) {%>
+                                            <tr>
+                                                <td><input type="checkbox" name="mulDel[]" class="singleDelet" value="<%= od.id %>"></td>
+                                                <td>
+                                                    <%= od.icon %>
+                                                </td>
+                                                <td>
+                                                    <%= od.title %>
+                                                </td>
+                                                <td>
+                                                    <%= od.content %>
+                                                </td>
+                                                <td>
+                                                    <% if(od.isActive) {%>
+                                                        <a href="?id=<%= od.id %>&page=<%= cpage %>&search=<%= search %>&status=deActive">Active</a>
+                                                        <% } else { %>
+                                                            <a href="?id=<%= od.id %>&page=<%= cpage %>&search=<%= search %>&status=Active">Deactive</a>
+                                                            <% } %>
+                                                </td>
+                                                <td><a href="/offer/delete/<%= od.id %>"><i class="fa-solid fa-trash-arrow-up" style="font-size: 25px; padding-right: 20px;"></i></a>
+                                                    <a href="/offer/update/<%= od.id %>"><i class="fa-regular fa-pen-to-square" style="font-size: 25px;"></i></a></td>
+                                            </tr>
+                                            <% } %>
+
+
+                                                <tr>
+                                                    <td>
+                                                        <% var pagenum=cpage %>
+
+                                                            <% var pre=--pagenum %>
+                                                                <% if(pre>0) {%>
+                                                                    <a href="?page=<%= pre%>&search=<%= search %>">
+                                                                    prev </a>
+                                                                    <% } %>
+                                                                        <a href="<%= cpage%>&search=<%= search %>">
+                                                                            <%=cpage%>
+                                                                        </a>
+                                                                        <% var next=++cpage %>
+
+                                                                            <% if(cpage<=pageNum){ %>
+                                                                                <a href="?page=<%= next %>&search=<%= search %>">
+                                                                                        next </a>
+                                                                                <% } %>
+                                                    </td>
+                                                </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('footer') %>

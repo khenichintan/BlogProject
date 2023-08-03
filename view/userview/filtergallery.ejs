@@ -1,0 +1,133 @@
+<%- include('header') %>
+    <section class="page-heading wow fadeIn" data-wow-duration="1.5s" style="background-image: url(files/images/01-heading.jpg)">
+        <div class="container">
+            <div class="page-name">
+                <h1>Latest Photos</h1>
+                <span>Lovely layout of heading</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio on-portfolio">
+        <div class="container">
+            <div class="col-sm-12 text-center">
+                <div id="projects-filter">
+                    <a href="#" data-filter="*" class="active">Show All</a>
+                    <% for(var ct of categoryr) { %>
+                        <a href="#" data-filter=".<%= ct.id %>">
+                            <%= ct.category %>
+                        </a>
+                        <% } %>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="row" id="portfolio-grid">
+                    <% for (var im of subcategoryr) { %>
+                        <div class="item col-md-4 col-sm-6 col-xs-12 <%= im.category %>">
+                            <figure>
+                                <img alt="1-image" src="<%= im.image %>" width="150" height="350">
+                                <figcaption>
+                                    <h3>
+                                        <%= im.name%>
+                                    </h3>
+                                    <p>
+                                        <%= im.content%>
+                                    </p>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <% } %>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="portfolio-page-nav text-center">
+                    <ul>
+                        <li><a href="#" class="current">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="three spacing"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h1>
+                        <a href="index.html">
+           YOM
+          </a>
+                    </h1>
+                    <p>©2015 Yom. All rights reserved.</p>
+                    <div class="spacing"></div>
+                    <ul class="socials">
+                        <li>
+                            <a href="http://facebook.com">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://twitter.com">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://dribbble.com">
+                                <i class="fa fa-dribbble"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://tumblr.com">
+                                <i class="fa fa-tumblr"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="spacing"></div>
+                </div>
+                <div class="col-md-3">
+                    <div class="spacing"></div>
+                    <div class="links">
+                        <h4>Some pages</h4>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">View some works here</a></li>
+                            <li><a href="#">Follow our blog</a></li>
+                            <li><a href="#">Contact us</a></li>
+                            <li><a href="#">Our services</a></li>
+                        </ul>
+                    </div>
+                    <div class="spacing"></div>
+                </div>
+                <div class="col-md-3">
+                    <div class="spacing"></div>
+                    <div class="links">
+                        <h4>Recent posts</h4>
+                        <ul>
+                            <li><a href="#">Hello World!</a></li>
+                            <li><a href="#">This is the post title here</a></li>
+                            <li><a href="#">Our happy day</a></li>
+                            <li><a href="#">The first works done</a></li>
+                            <li><a href="#">The cats and dogs</a></li>
+                        </ul>
+                    </div>
+                    <div class="spacing"></div>
+                </div>
+                <div class="col-md-3">
+                    <div class="spacing"></div>
+                    <h4>Email updats</h4>
+                    <p>We want to share our latest trends, news and insights with you.</p>
+                    <form>
+                        <input class="email-address" placeholder="Your email address" type="text">
+                        <input class="button boxed small" type="submit">
+                    </form>
+                    <div class="spacing"></div>
+                </div>
+            </div>
+        </div>
+        <div class="two spacing"></div>
+
+        <%- include('footer') %>
